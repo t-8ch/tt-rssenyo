@@ -182,17 +182,10 @@ function ttrssGetArticleResponse(inEvent, successCallback, errorCallback) {
 //**************** MarkArticleRead ********************
 function ttrssMarkArticleRead(ttrssurl, articleID, unread, successCallback, errorCallback) {
 		//console.log("GET CATEGORIES");
-		var unreadhelper = 1;
-		if (unread) {
-			unreadhelper = 1;
-		} else
-		{
-			unreadhelper = 0;
-		};
 		var data = {
 		  op: "updateArticle",
 		  article_ids: articleID,
-		  mode: unreadhelper,
+		  mode: unread ? 1 : 0,
 		  field: 2 //unread-Status
 		};
 		var request = new enyo.Ajax({
